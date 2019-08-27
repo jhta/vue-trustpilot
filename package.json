@@ -1,6 +1,6 @@
 {
   "name": "vue-trustpilot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Plugin to add Trustpilot widgets to Vue projects",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,11 @@
     "widget",
     "plugin"
   ],
+  "homepage": "https://github.com/jhta/vue-trustpilot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhta/vue-trustpilot"
+  },
   "author": "jeisonhs93@gmail.com",
   "license": "ISC",
   "dependencies": {
