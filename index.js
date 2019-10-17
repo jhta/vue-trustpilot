@@ -29,7 +29,7 @@ export default {
     const { widgets } = options
 
     // `templateId` and `businessunitId` are required but those could be set as html attributes too.
-    forEach(widgets, (key, value) => {
+    forEach(widgets, (value, key) => {
       if (!value.hasOwnProperty('templateId')) {
         logger(`'vue-trustpilot': ${key} widget doesn't have 'templateId' attribute`)
       }

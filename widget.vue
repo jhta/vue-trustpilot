@@ -46,6 +46,12 @@ export default {
     // result: <div class="trustpilot-widget" data-[key]="[value]" ><a href="reviewUrl" target="_blank" /></div>
     return createElement('div', { attrs }, [link]);
   },
+  mounted() {
+    const script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js'
+    document.head.appendChild(script)
+  }
 };
 
 
