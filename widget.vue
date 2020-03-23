@@ -1,15 +1,14 @@
 <script>
-
-import Vue from 'vue';
-import { kebabCase, reduce } from 'lodash';
+import Vue from "vue";
+import { kebabCase, reduce } from "lodash";
 
 export default {
   props: {
     /** widget identifier */
     identifier: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   render(createElement) {
     const { $attrs, $trustpilot, identifier } = this;
@@ -19,46 +18,46 @@ export default {
 
     // format configuration to data- + kebab-case, format needed for trustpilot script
     // example: templateId => data-template-id
-    const formattedTrustPilotConfig = reduce(widget, (result, value, key) => ({
-      ...result,
-      [`data-${kebabCase(key)}`]: value,
-    }), {});
+    const formattedTrustPilotConfig = reduce(
+      widget,
+      (result, value, key) => ({
+        ...result,
+        [`data-${kebabCase(key)}`]: value
+      }),
+      {}
+    );
 
     // formatted attributes to assing
     const attrs = {
       ...Object.create($attrs),
       ...formattedTrustPilotConfig,
-      class: 'trustpilot-widget',
+      class: "trustpilot-widget",
       id: `trustpilot-widget-${identifier}`
     };
 
     // anchor link element with url to review
     // result: <a href="reviewUrl" target="_blank"/>
-    const link = createElement(
-      'a',
-      {
-        attrs: {
-          href: widget.reviewUrl,
-          target: '_blank',
-        },
-      },
-    );
+    const link = createElement("a", {
+      attrs: {
+        href: widget.reviewUrl,
+        target: "_blank"
+      }
+    });
 
     // result: <div class="trustpilot-widget" data-[key]="[value]" ><a href="reviewUrl" target="_blank" /></div>
-    return createElement('div', { attrs }, [link]);
+    return createElement("div", { attrs }, [link]);
   },
   mounted() {
     try {
-    setTimeout(() => {
-      const trustbox = document.getElementById(`trustpilot-widget-${this.identifier}`)
-      window.Trustpilot.loadFromElement(trustbox)
-    }, 0)
+      this.$nextTick(() => {
+        const trustbox = document.getElementById(
+          `trustpilot-widget-${this.identifier}`
+        );
+        window.Trustpilot.loadFromElement(trustbox);
+      });
     } catch (error) {
-      console.info(error)
+      console.info(error);
     }
-
   }
 };
-
-
 </script>
