@@ -29,6 +29,7 @@ export default {
       ...Object.create($attrs),
       ...formattedTrustPilotConfig,
       class: 'trustpilot-widget',
+      id: `trustpilot-widget-${identifier}`
     };
 
     // anchor link element with url to review
@@ -45,6 +46,17 @@ export default {
 
     // result: <div class="trustpilot-widget" data-[key]="[value]" ><a href="reviewUrl" target="_blank" /></div>
     return createElement('div', { attrs }, [link]);
+  },
+  mounted() {
+    try {
+    setTimeout(() => {
+      const trustbox = document.getElementById(`trustpilot-widget-${this.identifier}`)
+      window.Trustpilot.loadFromElement(trustbox)
+    }, 0)
+    } catch (error) {
+      console.info(error)
+    }
+
   }
 };
 

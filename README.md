@@ -1,4 +1,5 @@
 # vue-trustpilot
+
 Plugin to create Trustpilot widgets in an easy way.
 
 ## Install
@@ -10,40 +11,41 @@ npm install vue-trustpilot --save
 ## How to use it:
 
 Add the static trustpilot script
+
 ```html
-<script src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
+<script
+  src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+  async=""
+></script>
 ```
 
-
 ```js
-import TrustpilotPlugin from 'vue-trustpilot'
-
+import TrustpilotPlugin from "vue-trustpilot";
 
 const carouselWidget = {
- templateId: 'XXXX',
- businessunitId: 'XXXXX',
- reviewUrl: 'trustpilot.review.com/mywebsite.com',
- locale: 'en-us',
- // ...more Trstupilot options in camel case
-}
+  templateId: "XXXX",
+  businessunitId: "XXXXX",
+  reviewUrl: "trustpilot.review.com/mywebsite.com",
+  locale: "en-us"
+  // ...more Trstupilot options in camel case
+};
 
 const reviewsListWidget = {
- templateId: 'XXXX',
- businessunitId: 'XXXXX',
- reviewUrl: 'trustpilot.review.com/mywebsite.com',
- locale: 'en-us',
- // ...more Trstupilot options in camel case
-}
+  templateId: "XXXX",
+  businessunitId: "XXXXX",
+  reviewUrl: "trustpilot.review.com/mywebsite.com",
+  locale: "en-us"
+  // ...more Trstupilot options in camel case
+};
 
 const options = {
   widgets: {
     carousel: carouselWidget,
     list: reviewsListWidget
   }
+};
 
-}
-
-Vue.use(TrustpilotPlugin, options)
+Vue.use(TrustpilotPlugin, options);
 ```
 
 The Plugin going to register the component `vue-trustpilot` globally.
@@ -86,3 +88,29 @@ Additionally you can access to your widgets data using the method `$trustpilot` 
   }
 
 ```
+
+## Nuxt
+
+```js
+// trustpilot.js
+const config = {
+  widgets: {
+    carousel: carouselWidget,
+    list: reviewsListWidget
+  }
+};
+
+module.exports = config;
+```
+
+```js
+// nuxt.config.js
+
+const trustpilot = require("./trustpilot");
+
+const config = {
+  modules: [["vue-trustpilot/nuxt", trustpilot]]
+};
+```
+
+NOTE: For Nuxt module is not needed to add the truspilot script
