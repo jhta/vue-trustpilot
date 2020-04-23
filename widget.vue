@@ -1,6 +1,7 @@
 <script>
 import Vue from "vue";
-import { kebabCase, reduce } from "lodash";
+import kebabCase from "lodash/kebabCase";
+import reduce from "lodash/reduce";
 
 export default {
   props: {
@@ -53,7 +54,9 @@ export default {
         const trustbox = document.getElementById(
           `trustpilot-widget-${this.identifier}`
         );
-        window.Trustpilot.loadFromElement(trustbox);
+        if (window.Trustpilot) {
+          window.Trustpilot.loadFromElement(trustbox);
+        }
       });
     } catch (error) {
       console.info(error);
