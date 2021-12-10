@@ -1,6 +1,5 @@
-import { isEmpty, forEach, get } from 'lodash'
-
-import TrustpilotWidget from './widget.vue'
+import { isEmpty, forEach, get } from 'lodash-es'
+import TrustpilotWidget from './widget.js'
 
 // implementation to prevent unnecessary logs in production
 const logger = (msg) => {
