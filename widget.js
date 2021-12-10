@@ -1,7 +1,4 @@
-<script>
-import Vue from "vue";
-import kebabCase from "lodash/kebabCase";
-import reduce from "lodash/reduce";
+import { kebabCase, reduce } from "lodash-es";
 
 export default {
   props: {
@@ -28,7 +25,7 @@ export default {
       {}
     );
 
-    // formatted attributes to assing
+    // formatted attributes to assign
     const attrs = {
       ...Object.create($attrs),
       ...formattedTrustPilotConfig,
@@ -63,4 +60,3 @@ export default {
     }
   }
 };
-</script>
